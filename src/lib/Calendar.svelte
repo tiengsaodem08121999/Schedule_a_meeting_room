@@ -69,8 +69,6 @@ calendar.render();
 
 </script>
 
-
-
 <div id='calendar-container'>
   <div id='calendar'></div>
 </div>
