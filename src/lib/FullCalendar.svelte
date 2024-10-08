@@ -165,7 +165,4 @@
     height: 750px;
     width: 1000px;
   }
-  .fc-button-group > .fc-customAddEventButton-button {
-    margin-right: 3px ; 
-  }
 </style>
