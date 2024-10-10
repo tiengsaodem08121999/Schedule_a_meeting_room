@@ -1,7 +1,128 @@
 <script>
-  import FullCalendar from './lib/FullCalendar.svelte';
+  import { onMount } from "svelte";
+  import { Calendar } from "@fullcalendar/core";
+  import dayGridPlugin from "@fullcalendar/daygrid";
+  import timeGridPlugin from "@fullcalendar/timegrid";
+  import listPlugin from "@fullcalendar/list";
+  import EventModal from "./component/EventModal.svelte";
+
+  let calendar;
+  let eventName = "";
+  let eventRoom = "";
+  let startDate = "";
+  let startTime = "";
+  let endDate = "";
+  let endTime = "";
+  let isEdit = false;
+  let showModal = false;
+
+  onMount(() => {
+    let calendarEl = document.getElementById("calendar");
+
+    calendar = new Calendar(calendarEl, {
+      plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
+      initialView: "timeGridWeek",
+      headerToolbar: {
+        left: "prev,next today",
+        center: "title",
+        right:
+          "dayGridMonth,timeGridWeek,timeGridDay,listMonth customAddEventButton",
+      },
+      customButtons: {
+        customAddEventButton: {
+          text: "Add Event",
+          click() {
+            isEdit = false;
+            eventName = "";
+            eventRoom = "";
+            startDate = "";
+            startTime = "";
+            endDate = "";
+            endTime = "";
+            showModal = true;
+          },
+        },
+      },
+      events: [
+        {
+          title: "A",
+          start: "2024-10-08T15:00:00",
+          end: "2024-10-08T17:00:00",
+          backgroundColor: "red",
+          borderColor: "red",
+        },
+        {
+          title: "B",
+          start: "2024-10-08T15:00:00",
+          end: "2024-10-08T17:00:00",
+        },
+      ],
+      allDaySlot: false,
+      eventClick: function (info) {
+        isEdit = true;
+        eventName = info.event.title;
+        const start = info.event.start.toISOString();
+        const end = info.event.end.toISOString();
+        startDate = start.slice(0, 10);
+        startTime = start.slice(11, 16);
+        endDate = end.slice(0, 10);
+        endTime = end.slice(11, 16);
+        showModal = true;
+      },
+    });
+
+    calendar.render();
+  });
+
+  function handleSubmit(eventData) {
+    if (isEdit) {
+      console.log("Editing event", eventData);
+    } else {
+      calendar.addEvent({
+        title: eventData.title,
+        start: eventData.start,
+        end: eventData.end,
+        extendedProps: { room: eventData.room },
+      });
+    }
+    showModal = false;
+  }
+
+  function closeModal() {
+    showModal = false;
+  }
 </script>
 
-<main>
-  <FullCalendar />
-</main>
+<div id="calendar"></div>
+
+<EventModal
+  bind:title={eventName}
+  bind:room={eventRoom}
+  bind:startDate
+  bind:startTime
+  bind:endDate
+  bind:endTime
+  {isEdit}
+  bind:showModal
+  on:submit={handleSubmit}
+  on:close={closeModal}
+/>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  #calendar {
+    height: 750px;
+    width: 1000px;
+  }
+
+  .modal.show {
+    display: block !important;
+  }
+</style>
