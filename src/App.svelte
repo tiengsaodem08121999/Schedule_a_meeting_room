@@ -5,6 +5,7 @@
   import timeGridPlugin from "@fullcalendar/timegrid";
   import listPlugin from "@fullcalendar/list";
   import EventModal from "./component/EventModal.svelte";
+  import CalendarLeft from './component/Calendar.svelte';
 
   let calendar;
   let eventName = "";
@@ -138,7 +139,9 @@
     <div class="col-9">
       <div id="calendar"></div>
     </div>
-    <div class="col-2">calendar</div>
+    <div class="col-2">
+      <CalendarLeft/>
+    </div>
   </div>
 </div>
 
