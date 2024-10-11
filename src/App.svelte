@@ -21,12 +21,11 @@
 
     calendar = new Calendar(calendarEl, {
       plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
-      initialView: "timeGridWeek",
+      initialView: "timeGridWeek", // Hiển thị chế độ xem tuần ban đầu
       headerToolbar: {
         left: "prev,next today",
         center: "title",
-        right:
-          "dayGridMonth,timeGridWeek,timeGridDay,listMonth customAddEventButton",
+        right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth customAddEventButton",
       },
       customButtons: {
         customAddEventButton: {
@@ -46,18 +45,23 @@
       events: [
         {
           title: "A",
-          start: "2024-10-08T15:00:00",
-          end: "2024-10-08T17:00:00",
+          start: "2024-10-11T15:00:00",
+          end: "2024-10-11T17:00:00",
           backgroundColor: "red",
           borderColor: "red",
         },
         {
           title: "B",
-          start: "2024-10-08T15:00:00",
-          end: "2024-10-08T17:00:00",
+          start: "2024-10-11T15:00:00",
+          end: "2024-10-11T17:00:00",
         },
       ],
       allDaySlot: false,
+      slotLabelFormat: {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      },
       eventClick: function (info) {
         isEdit = true;
         eventName = info.event.title;
@@ -95,6 +99,7 @@
 
 <div class="container-fluid">
   <div class="row">
+    <!-- Sidebar -->
     <div class="col-1">
       <nav
         id="sidebarMenu"
