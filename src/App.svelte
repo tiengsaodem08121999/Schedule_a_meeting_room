@@ -5,7 +5,7 @@
   import timeGridPlugin from "@fullcalendar/timegrid";
   import listPlugin from "@fullcalendar/list";
   import EventModal from "./component/EventModal.svelte";
-  import CalendarLeft from './component/Calendar.svelte';
+  import CalendarLeft from "./component/Calendar.svelte";
 
   let calendar;
   let eventName = "";
@@ -26,7 +26,8 @@
       headerToolbar: {
         left: "prev,next today",
         center: "title",
-        right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth customAddEventButton",
+        right:
+          "dayGridMonth,timeGridWeek,timeGridDay,listMonth customAddEventButton",
       },
       customButtons: {
         customAddEventButton: {
@@ -123,13 +124,13 @@
               href="#"
               class="list-group-item list-group-item-action py-2 ripple"
             >
-              <i class="fa-regular fa-calendar"></i>
+              <i class="fas fa-search"></i>
             </a>
             <a
               href="#"
               class="list-group-item list-group-item-action py-2 ripple"
             >
-              <i class="fa-solid fa-circle-info"></i>
+              <i class="fa-regular fa-calendar"></i>
             </a>
           </div>
         </div>
@@ -140,7 +141,20 @@
       <div id="calendar"></div>
     </div>
     <div class="col-2">
-      <CalendarLeft/>
+      <CalendarLeft />
+      <hr />
+      <div class="d-block">
+        OTHERS
+        <div>
+          <input type="checkbox" class="rom_a" /> Rom A
+        </div>
+        <div>
+          <input type="checkbox" class="rom_b" /> Rom B
+        </div>
+        <div>
+          <input type="checkbox" class="rom_c" /> Rom C
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -174,5 +188,14 @@
 
   .modal.show {
     display: block !important;
+  }
+  .rom_a{
+    accent-color: rgb(77, 128, 0);
+  }
+  .rom_b{
+    accent-color: rgb(255, 234, 0);
+  }
+  .rom_c{
+    accent-color: rgb(255, 25, 0);
   }
 </style>

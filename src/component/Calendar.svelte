@@ -2,10 +2,10 @@
     let today = new Date();
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
-  
-    // Hàm để lấy tháng hiện tại và ngày hiện tại
-    const getCurrentMonth = () => new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long', year: 'numeric' });
-  
+    
+    // Reactive statement để cập nhật giá trị cho currentMonthName khi currentMonth hoặc currentYear thay đổi
+    $: currentMonthName = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long', year: 'numeric' });
+    
     // Hàm để tạo bảng lịch cho tháng và năm hiện tại
     const generateCalendar = (month, year) => {
       const firstDay = new Date(year, month).getDay();
@@ -62,20 +62,20 @@
         <tr>
           <th colspan="7">
             <span class="btn-group">
-            <span class="btn active">{getCurrentMonth()}</span>
+              <span class="btn active">{currentMonthName}</span>
               <button on:click={prevMonth} class="btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
               <button on:click={nextMonth} class="btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
             </span>
           </th>
         </tr>
         <tr>
-          <th>Su</th>
-          <th>Mo</th>
-          <th>Tu</th>
-          <th>We</th>
-          <th>Th</th>
-          <th>Fr</th>
-          <th>Sa</th>
+          <th>S</th>
+          <th>M</th>
+          <th>T</th>
+          <th>W</th>
+          <th>T</th>
+          <th>F</th>
+          <th>S</th>
         </tr>
       </thead>
       <tbody>
