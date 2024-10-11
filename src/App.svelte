@@ -130,10 +130,10 @@
       </nav>
       <!-- Sidebar -->
     </div>
-    <div class="col-10">
+    <div class="col-9">
       <div id="calendar"></div>
     </div>
-    <div class="col-1">calendar</div>
+    <div class="col-2">calendar</div>
   </div>
 </div>
 
@@ -161,7 +161,7 @@
 
   #calendar {
     max-height: 700px;
-    width: 90%;
+    width: 100%;
   }
 
   .modal.show {
