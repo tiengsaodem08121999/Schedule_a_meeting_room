@@ -93,7 +93,49 @@
   }
 </script>
 
-<div id="calendar"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-1">
+      <nav
+        id="sidebarMenu"
+        class="collapse d-lg-block sidebar collapse bg-white"
+      >
+        <div class="position-sticky">
+          <div class="list-group list-group-flush mx-3 mt-4">
+            <a
+              href="#"
+              class="list-group-item list-group-item-action py-2 ripple"
+              ><i class="fas fa-calendar fa-fw me-3"></i>
+            </a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-action py-2 ripple"
+            >
+              <i class="fa-regular fa-bell"></i>
+            </a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-action py-2 ripple"
+            >
+              <i class="fa-regular fa-calendar"></i>
+            </a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-action py-2 ripple"
+            >
+              <i class="fa-solid fa-circle-info"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <!-- Sidebar -->
+    </div>
+    <div class="col-10">
+      <div id="calendar"></div>
+    </div>
+    <div class="col-1">calendar</div>
+  </div>
+</div>
 
 <EventModal
   bind:title={eventName}
@@ -111,15 +153,15 @@
 <style>
   html,
   body {
-    margin: 0;
+    margin: 10px 10px;
     padding: 0;
     height: 100%;
     width: 100%;
   }
 
   #calendar {
-    height: 750px;
-    width: 1000px;
+    max-height: 700px;
+    width: 90%;
   }
 
   .modal.show {
