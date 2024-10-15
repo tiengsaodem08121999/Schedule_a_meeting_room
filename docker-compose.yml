@@ -1,0 +1,35 @@
+services:
+  svelte-app:
+    build:
+      context: .  # Sử dụng Dockerfile ở thư mục gốc
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev -- --host
+
+  backend:
+    build:
+      context: ./backend  # Sử dụng Dockerfile trong thư mục backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+    command: node app.js
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: splus@2024
+      MYSQL_DATABASE: svelte
+      MYSQL_PASSWORD: splus@2024
+    ports:
+      - "3309:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

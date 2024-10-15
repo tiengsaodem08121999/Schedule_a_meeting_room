@@ -47,15 +47,15 @@
       events: [
         {
           title: "A",
-          start: "2024-10-11T15:00:00",
-          end: "2024-10-11T17:00:00",
+          start: "2024-10-15T15:00:00",
+          end: "2024-10-15T17:00:00",
           backgroundColor: "red",
           borderColor: "red",
         },
         {
           title: "B",
-          start: "2024-10-11T15:00:00",
-          end: "2024-10-11T17:00:00",
+          start: "2024-10-15T15:00:00",
+          end: "2024-10-15T17:00:00",
         },
       ],
       allDaySlot: false,
