@@ -13,10 +13,10 @@ services:
     build:
       context: ./backend  # Sử dụng Dockerfile trong thư mục backend
     ports:
-      - "3000:3000"
+      - "8089:8080"
     volumes:
       - ./backend:/app
-    command: node app.js
+    command: npm start
     depends_on:
       - mysql
 
